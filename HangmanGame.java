@@ -46,10 +46,20 @@ public class HangmanGame
         wordInProgress = "";
         for(int index = 0; index < chosenWord.length(); index++)
         {
-            wordInProgress += " _ ";
+            wordInProgress += "_";
         }
     }
 
+    // Print out the current word in progress
+    public void printWord()
+    {
+        for(int index = 0; index < wordInProgress.length(); index++)
+        {
+            System.out.print(" " + wordInProgress.charAt(index) + " ");
+        }
+        System.out.print("\n");
+    }
+    
     // Reads a character from the keyboard, always returns a capital letter
     public char takeInput()
     {
@@ -70,7 +80,8 @@ public class HangmanGame
         game.loadDictionary();
         game.loadGameData();
         System.out.println("The word is " + game.chosenWord);
-        System.out.println(game.wordInProgress);
+        game.printWord();
+        System.out.println("Please enter your first guess");
         char letter = game.takeInput();
         System.out.println("You typed: " + letter);
     }

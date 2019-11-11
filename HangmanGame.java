@@ -48,7 +48,7 @@ public class HangmanGame
         {
             wordInProgress[index] = '_';
         }
-        attempts = 7;
+        attempts = 6;
     }
 
     // Print out the current word in progress
@@ -91,7 +91,162 @@ public class HangmanGame
         return hasLetter;
     }
 
-    public boolean victory()
+    // Print the image of the hangman according to how many guesses are left
+    public void drawPicture()
+    {
+        if(attempts == 6)
+        {
+            System.out.println("                                  ");
+            System.out.println("                                  ");
+            System.out.println("               ________           ");
+            System.out.println("              /        \\          ");
+            System.out.println("             /          \\         ");
+            System.out.println("                         \\        ");
+            System.out.println("                          \\       ");
+            System.out.println("                          |       ");
+            System.out.println("                          |       ");
+            System.out.println("                          |       ");
+            System.out.println("                          |       ");
+            System.out.println("                          |       ");
+            System.out.println("                          |       ");
+            System.out.println("                          |       ");
+            System.out.println("                          |       ");
+            System.out.println("                          |       ");
+            System.out.println("                          |       ");
+            System.out.println("                     _____|_____  ");
+
+        }
+        if(attempts == 5)
+        {
+            System.out.println("                                  ");
+            System.out.println("                                  ");
+            System.out.println("               ________           ");
+            System.out.println("              /        \\          ");
+            System.out.println("             /          \\         ");
+            System.out.println("           ___           \\        ");
+            System.out.println("          /   \\           \\       ");
+            System.out.println("          \\___/           |       ");
+            System.out.println("                          |       ");
+            System.out.println("                          |       ");
+            System.out.println("                          |       ");
+            System.out.println("                          |       ");
+            System.out.println("                          |       ");
+            System.out.println("                          |       ");
+            System.out.println("                          |       ");
+            System.out.println("                          |       ");
+            System.out.println("                          |       ");
+            System.out.println("                     _____|_____  ");
+
+        }
+        if(attempts == 4)
+        {
+            System.out.println("                                  ");
+            System.out.println("                                  ");
+            System.out.println("               ________           ");
+            System.out.println("              /        \\          ");
+            System.out.println("             /          \\         ");
+            System.out.println("           ___           \\        ");
+            System.out.println("          /   \\           \\       ");
+            System.out.println("          \\___/           |       ");
+            System.out.println("            |             |       ");
+            System.out.println("            |             |       ");
+            System.out.println("            |             |       ");
+            System.out.println("            |             |       ");
+            System.out.println("            |             |       ");
+            System.out.println("                          |       ");
+            System.out.println("                          |       ");
+            System.out.println("                          |       ");
+            System.out.println("                          |       ");
+            System.out.println("                     _____|_____  ");
+        }
+        if(attempts == 3)
+        {
+            System.out.println("                                  ");
+            System.out.println("                                  ");
+            System.out.println("               ________           ");
+            System.out.println("              /        \\          ");
+            System.out.println("             /          \\         ");
+            System.out.println("           ___           \\        ");
+            System.out.println("          /   \\           \\       ");
+            System.out.println("          \\___/           |       ");
+            System.out.println("            |             |       ");
+            System.out.println("           /|             |       ");
+            System.out.println("          / |             |       ");
+            System.out.println("         /  |             |       ");
+            System.out.println("            |             |       ");
+            System.out.println("                          |       ");
+            System.out.println("                          |       ");
+            System.out.println("                          |       ");
+            System.out.println("                          |       ");
+            System.out.println("                     _____|_____  ");
+        }
+        if(attempts == 2)
+        {
+            System.out.println("                                  ");
+            System.out.println("                                  ");
+            System.out.println("               ________           ");
+            System.out.println("              /        \\          ");
+            System.out.println("             /          \\         ");
+            System.out.println("           ___           \\        ");
+            System.out.println("          /   \\           \\       ");
+            System.out.println("          \\___/           |       ");
+            System.out.println("            |             |       ");
+            System.out.println("           /|\\            |       ");
+            System.out.println("          / | \\           |       ");
+            System.out.println("         /  |  \\          |       ");
+            System.out.println("            |             |       ");
+            System.out.println("                          |       ");
+            System.out.println("                          |       ");
+            System.out.println("                          |       ");
+            System.out.println("                          |       ");
+            System.out.println("                     _____|_____  ");
+        }
+        if(attempts == 1)
+        {
+            System.out.println("                                  ");
+            System.out.println("                                  ");
+            System.out.println("               ________           ");
+            System.out.println("              /        \\          ");
+            System.out.println("             /          \\         ");
+            System.out.println("           ___           \\        ");
+            System.out.println("          /   \\           \\       ");
+            System.out.println("          \\___/           |       ");
+            System.out.println("            |             |       ");
+            System.out.println("           /|\\            |       ");
+            System.out.println("          / | \\           |       ");
+            System.out.println("         /  |  \\          |       ");
+            System.out.println("            |             |       ");
+            System.out.println("           /              |       ");
+            System.out.println("          /               |       ");
+            System.out.println("         /                |       ");
+            System.out.println("                          |       ");
+            System.out.println("                     _____|_____  ");
+        }
+        if(attempts == 0)
+        {
+            System.out.println("                                  ");
+            System.out.println("                                  ");
+            System.out.println("               ________           ");
+            System.out.println("              /        \\          ");
+            System.out.println("             /          \\         ");
+            System.out.println("           ___           \\        ");
+            System.out.println("          /   \\           \\       ");
+            System.out.println("          \\___/           |       ");
+            System.out.println("            |             |       ");
+            System.out.println("           /|\\            |       ");
+            System.out.println("          / | \\           |       ");
+            System.out.println("         /  |  \\          |       ");
+            System.out.println("            |             |       ");
+            System.out.println("           / \\            |       ");
+            System.out.println("          /   \\           |       ");
+            System.out.println("         /     \\          |       ");
+            System.out.println("                          |       ");
+            System.out.println("                     _____|_____  ");
+        }
+    }
+    
+    // Determines whether the game should continue
+    public boolean finished()
     {
         int remaining = 0;
         for(int index = 0; index < chosenWord.length(); index++)
@@ -101,7 +256,8 @@ public class HangmanGame
                 remaining++;
             }
         }
-        return(remaining == 0);
+        System.out.println("There are " + remaining + " letters left to go");
+        return(remaining == 0 || attempts == 0);
     }
 
     // Run the game
@@ -112,7 +268,7 @@ public class HangmanGame
         game.loadGameData();
         System.out.println("The word is " + game.chosenWord);
         game.printWord();
-        while(!game.victory())
+        while(!game.finished())
         {
             System.out.println("Please enter your guess");
             char letter = game.takeInput();
@@ -122,9 +278,9 @@ public class HangmanGame
                 System.out.println("Sorry!");
                 game.attempts--;
             }
+            game.drawPicture();
             System.out.println("You have " + game.attempts + " guesses left");
             game.printWord();
         }
-        System.out.println("Congratulations!");
     }
 }

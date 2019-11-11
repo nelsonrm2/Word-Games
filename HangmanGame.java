@@ -10,6 +10,9 @@ public class HangmanGame
     }
     
     public String[] dictionary;
+    public String chosenWord;
+    public char[] wordInProgress;
+    public int attempts;
 
     // Fills the dictionary array with strings from our text file
     public void loadDictionary()
@@ -34,28 +37,26 @@ public class HangmanGame
         }
     }
 
-    public String chosenWord;
-    public String wordInProgress;
-
     // Prepare the game for play
     public void loadGameData()
     {
         Random random = new Random();
         int position = random.nextInt(73029);
         chosenWord = dictionary[position];
-        wordInProgress = "";
+        wordInProgress = new char[chosenWord.length()];
         for(int index = 0; index < chosenWord.length(); index++)
         {
-            wordInProgress += "_";
+            wordInProgress[index] = '_';
         }
+        attempts = 7;
     }
 
     // Print out the current word in progress
     public void printWord()
     {
-        for(int index = 0; index < wordInProgress.length(); index++)
+        for(int index = 0; index < chosenWord.length(); index++)
         {
-            System.out.print(" " + wordInProgress.charAt(index) + " ");
+            System.out.print(" " + wordInProgress[index] + " ");
         }
         System.out.print("\n");
     }
@@ -73,7 +74,37 @@ public class HangmanGame
         return letter;
     }
 
-    // Call the necessary functions to run the game
+    // Returns true if the typed letter is in the word
+    public boolean processInput(char letter)
+    {
+        boolean hasLetter = false;
+        for(int index = 0; index < chosenWord.length(); index++)
+        {
+            char current = chosenWord.charAt(index);
+            if(current == letter || current == (letter + 32))
+            {
+                wordInProgress[index] = letter;
+                System.out.println("Nice guess!");
+                hasLetter = true;
+            }
+        }
+        return hasLetter;
+    }
+
+    public boolean victory()
+    {
+        int remaining = 0;
+        for(int index = 0; index < chosenWord.length(); index++)
+        {
+            if(wordInProgress[index] == '_')
+            {
+                remaining++;
+            }
+        }
+        return(remaining == 0);
+    }
+
+    // Run the game
     public static void main(String[] args)
     {
         HangmanGame game = new HangmanGame();
@@ -81,8 +112,19 @@ public class HangmanGame
         game.loadGameData();
         System.out.println("The word is " + game.chosenWord);
         game.printWord();
-        System.out.println("Please enter your first guess");
-        char letter = game.takeInput();
-        System.out.println("You typed: " + letter);
+        while(!game.victory())
+        {
+            System.out.println("Please enter your guess");
+            char letter = game.takeInput();
+            System.out.println("You typed: " + letter);
+            if(!game.processInput(letter))
+            {
+                System.out.println("Sorry!");
+                game.attempts--;
+            }
+            System.out.println("You have " + game.attempts + " guesses left");
+            game.printWord();
+        }
+        System.out.println("Congratulations!");
     }
 }

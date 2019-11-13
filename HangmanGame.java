@@ -19,6 +19,7 @@ public class HangmanGame
     public String[] image7;
     public String chosenWord;
     public char[] wordInProgress;
+    public String guessedLetters;
     public int attempts;
 
     // Fills the dictionary array with strings from our text file
@@ -44,7 +45,7 @@ public class HangmanGame
         }
     }
 
-    //
+    // Fill the image arrays with strings from our image file
     public void loadImages()
     {
         int cursor = 0;
@@ -114,6 +115,7 @@ public class HangmanGame
         {
             wordInProgress[index] = '_';
         }
+        guessedLetters = "";
         attempts = 6;
     }
 
@@ -137,6 +139,7 @@ public class HangmanGame
         {
             letter -= 32;
         }
+        guessedLetters += letter;
         return letter;
     }
 
@@ -250,11 +253,12 @@ public class HangmanGame
         game.loadDictionary();
         game.loadGameData();
         game.loadImages();
-        System.out.println("The word is " + game.chosenWord);
+        //System.out.println("The word is " + game.chosenWord);
         game.printWord();
         while(!game.finished())
         {
             game.drawPicture();
+            System.out.println("So far you have guessed: " + game.guessedLetters);
             System.out.println("Please enter your guess");
             char letter = game.takeInput();
             if(!game.processInput(letter))

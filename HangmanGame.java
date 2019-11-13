@@ -22,7 +22,7 @@ public class HangmanGame
     public String guessedLetters;
     public int attempts;
 
-    // Fills the dictionary array with strings from our text file
+    // Fills the dictionary array with strings from our dictionary file
     public void loadDictionary()
     {
         dictionary = new String[73029];
@@ -120,6 +120,7 @@ public class HangmanGame
     }
 
     // Print out the current word in progress
+    // If a letter has not been guessed yet, print a '_' character
     public void printWord()
     {
         for(int index = 0; index < chosenWord.length(); index++)
@@ -130,6 +131,7 @@ public class HangmanGame
     }
     
     // Reads a character from the keyboard, always returns a capital letter
+    // If multiple letters are typed, only the first one is considered
     public char takeInput()
     {
         Scanner keyboard = new Scanner(System.in);
@@ -139,13 +141,21 @@ public class HangmanGame
         {
             letter -= 32;
         }
-        guessedLetters += letter;
+        if(letter != '?')
+        {
+            guessedLetters += letter + " ";
+        }
         return letter;
     }
 
-    // Returns true if the typed letter is in the word
+    // Returns true if the typed letter is valid in the word
     public boolean processInput(char letter)
     {
+        if(letter == '?')
+        {
+            help();
+            return true;
+        }
         boolean hasLetter = false;
         for(int index = 0; index < chosenWord.length(); index++)
         {
@@ -153,9 +163,12 @@ public class HangmanGame
             if(current == letter || current == (letter + 32))
             {
                 wordInProgress[index] = letter;
-                System.out.println("Nice guess!");
                 hasLetter = true;
             }
+        }
+        if(hasLetter)
+        {
+            System.out.println("Nice guess!");
         }
         return hasLetter;
     }
@@ -246,6 +259,41 @@ public class HangmanGame
         return(remaining == 0 || attempts == 0);
     }
 
+    // Scans through the dictionary to look for likely words based on known letters
+    public void help()
+    {
+        int cursor = 0;
+        int length = chosenWord.length();
+        String[] possibleWords = new String[500];
+        for(int index = 0; index < 73020; index++)
+        {
+            String current = dictionary[index];
+            if(current.length() == length)
+            {
+                boolean possible = true;
+                for(int jndex = 0; jndex < length; jndex++)
+                {
+                    if(wordInProgress[jndex] != '_' &&
+                       wordInProgress[jndex] != current.charAt(jndex) &&
+                       wordInProgress[jndex] + 32 != current.charAt(jndex))
+                    {
+                        possible = false;
+                    }
+                }
+                if(possible)
+                {
+                    possibleWords[cursor] = dictionary[index];
+                    cursor++;
+                }
+            }
+        }
+        System.out.println("The word could be:");
+        for(int index = 0; index < cursor; index++)
+        {
+            System.out.println(possibleWords[index]);
+        }
+    }
+
     // Run the game
     public static void main(String[] args)
     {
@@ -253,11 +301,10 @@ public class HangmanGame
         game.loadDictionary();
         game.loadGameData();
         game.loadImages();
-        //System.out.println("The word is " + game.chosenWord);
         game.printWord();
+        game.drawPicture();
         while(!game.finished())
         {
-            game.drawPicture();
             System.out.println("So far you have guessed: " + game.guessedLetters);
             System.out.println("Please enter your guess");
             char letter = game.takeInput();
@@ -266,7 +313,10 @@ public class HangmanGame
                 System.out.println("Sorry!");
                 game.attempts--;
             }
-            game.drawPicture();
+            if(letter != '?')
+            {
+                game.drawPicture();
+            }
             game.printWord();
         }
     }

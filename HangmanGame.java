@@ -259,12 +259,25 @@ public class HangmanGame
         return(remaining == 0 || attempts == 0);
     }
 
+    // Helper function for help()
+    public boolean hasBeenGuessed(char letter)
+    {
+        for(int index = 0; index < guessedLetters.length(); index++)
+        {
+            if(letter == guessedLetters.charAt(index))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     // Scans through the dictionary to look for likely words based on known letters
     public void help()
     {
         int cursor = 0;
         int length = chosenWord.length();
-        String[] possibleWords = new String[500];
+        String[] possibleWords = new String[20000];
         for(int index = 0; index < 73020; index++)
         {
             String current = dictionary[index];
@@ -275,7 +288,8 @@ public class HangmanGame
                 {
                     if(wordInProgress[jndex] != '_' &&
                        wordInProgress[jndex] != current.charAt(jndex) &&
-                       wordInProgress[jndex] + 32 != current.charAt(jndex))
+                       wordInProgress[jndex] + 32 != current.charAt(jndex) ||
+                       hasBeenGuessed(current.charAt(jndex)))
                     {
                         possible = false;
                     }

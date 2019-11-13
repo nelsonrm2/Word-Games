@@ -10,6 +10,13 @@ public class HangmanGame
     }
     
     public String[] dictionary;
+    public String[] image1;
+    public String[] image2;
+    public String[] image3;
+    public String[] image4;
+    public String[] image5;
+    public String[] image6;
+    public String[] image7;
     public String chosenWord;
     public char[] wordInProgress;
     public int attempts;
@@ -37,6 +44,65 @@ public class HangmanGame
         }
     }
 
+    //
+    public void loadImages()
+    {
+        int cursor = 0;
+        String currentLine;
+
+        try
+        {
+            BufferedReader reader = new BufferedReader(new FileReader("images.txt"));
+            image1 = new String[19];
+            for(int index = 0; index < 19; index++)
+            {
+                currentLine = reader.readLine();
+                image1[index] = currentLine;
+            }
+            image2 = new String[19];
+            for(int index = 0; index < 19; index++)
+            {
+                currentLine = reader.readLine();
+                image2[index] = currentLine;
+            }
+            image3 = new String[19];
+            for(int index = 0; index < 19; index++)
+            {
+                currentLine = reader.readLine();
+                image3[index] = currentLine;
+            }
+            image4 = new String[19];
+            for(int index = 0; index < 19; index++)
+            {
+                currentLine = reader.readLine();
+                image4[index] = currentLine;
+            }
+            image5 = new String[19];
+            for(int index = 0; index < 19; index++)
+            {
+                currentLine = reader.readLine();
+                image5[index] = currentLine;
+            }
+            image6 = new String[19];
+            for(int index = 0; index < 19; index++)
+            {
+                currentLine = reader.readLine();
+                image6[index] = currentLine;
+            }
+            image7 = new String[19];
+            for(int index = 0; index < 19; index++)
+            {
+                currentLine = reader.readLine();
+                image7[index] = currentLine;
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("There was trouble reading from the dictionary");
+            System.out.println(e);
+        }
+    }
+    
     // Prepare the game for play
     public void loadGameData()
     {
@@ -96,152 +162,59 @@ public class HangmanGame
     {
         if(attempts == 6)
         {
-            System.out.println("                                  ");
-            System.out.println("                                  ");
-            System.out.println("               ________           ");
-            System.out.println("              /        \\          ");
-            System.out.println("             /          \\         ");
-            System.out.println("                         \\        ");
-            System.out.println("                          \\       ");
-            System.out.println("                          |       ");
-            System.out.println("                          |       ");
-            System.out.println("                          |       ");
-            System.out.println("                          |       ");
-            System.out.println("                          |       ");
-            System.out.println("                          |       ");
-            System.out.println("                          |       ");
-            System.out.println("                          |       ");
-            System.out.println("                          |       ");
-            System.out.println("                          |       ");
-            System.out.println("                     _____|_____  ");
-
+            for(int index = 0; index < 18; index++)
+            {
+                String line = image1[index];
+                System.out.println(line);
+            }
         }
-        if(attempts == 5)
+        else if(attempts == 5)
         {
-            System.out.println("                                  ");
-            System.out.println("                                  ");
-            System.out.println("               ________           ");
-            System.out.println("              /        \\          ");
-            System.out.println("             /          \\         ");
-            System.out.println("           ___           \\        ");
-            System.out.println("          /   \\           \\       ");
-            System.out.println("          \\___/           |       ");
-            System.out.println("                          |       ");
-            System.out.println("                          |       ");
-            System.out.println("                          |       ");
-            System.out.println("                          |       ");
-            System.out.println("                          |       ");
-            System.out.println("                          |       ");
-            System.out.println("                          |       ");
-            System.out.println("                          |       ");
-            System.out.println("                          |       ");
-            System.out.println("                     _____|_____  ");
-
+            for(int index = 0; index < 18; index++)
+            {
+                String line = image2[index];
+                System.out.println(line);
+            }
         }
-        if(attempts == 4)
+        else if(attempts == 4)
         {
-            System.out.println("                                  ");
-            System.out.println("                                  ");
-            System.out.println("               ________           ");
-            System.out.println("              /        \\          ");
-            System.out.println("             /          \\         ");
-            System.out.println("           ___           \\        ");
-            System.out.println("          /   \\           \\       ");
-            System.out.println("          \\___/           |       ");
-            System.out.println("            |             |       ");
-            System.out.println("            |             |       ");
-            System.out.println("            |             |       ");
-            System.out.println("            |             |       ");
-            System.out.println("            |             |       ");
-            System.out.println("                          |       ");
-            System.out.println("                          |       ");
-            System.out.println("                          |       ");
-            System.out.println("                          |       ");
-            System.out.println("                     _____|_____  ");
+            for(int index = 0; index < 18; index++)
+            {
+                String line = image3[index];
+                System.out.println(line);
+            }
         }
-        if(attempts == 3)
+        else if(attempts == 3)
         {
-            System.out.println("                                  ");
-            System.out.println("                                  ");
-            System.out.println("               ________           ");
-            System.out.println("              /        \\          ");
-            System.out.println("             /          \\         ");
-            System.out.println("           ___           \\        ");
-            System.out.println("          /   \\           \\       ");
-            System.out.println("          \\___/           |       ");
-            System.out.println("            |             |       ");
-            System.out.println("           /|             |       ");
-            System.out.println("          / |             |       ");
-            System.out.println("         /  |             |       ");
-            System.out.println("            |             |       ");
-            System.out.println("                          |       ");
-            System.out.println("                          |       ");
-            System.out.println("                          |       ");
-            System.out.println("                          |       ");
-            System.out.println("                     _____|_____  ");
+            for(int index = 0; index < 18; index++)
+            {
+                String line = image4[index];
+                System.out.println(line);
+            }
         }
-        if(attempts == 2)
+        else if(attempts == 2)
         {
-            System.out.println("                                  ");
-            System.out.println("                                  ");
-            System.out.println("               ________           ");
-            System.out.println("              /        \\          ");
-            System.out.println("             /          \\         ");
-            System.out.println("           ___           \\        ");
-            System.out.println("          /   \\           \\       ");
-            System.out.println("          \\___/           |       ");
-            System.out.println("            |             |       ");
-            System.out.println("           /|\\            |       ");
-            System.out.println("          / | \\           |       ");
-            System.out.println("         /  |  \\          |       ");
-            System.out.println("            |             |       ");
-            System.out.println("                          |       ");
-            System.out.println("                          |       ");
-            System.out.println("                          |       ");
-            System.out.println("                          |       ");
-            System.out.println("                     _____|_____  ");
+            for(int index = 0; index < 18; index++)
+            {
+                String line = image5[index];
+                System.out.println(line);
+            }
         }
-        if(attempts == 1)
+        else if(attempts == 1)
         {
-            System.out.println("                                  ");
-            System.out.println("                                  ");
-            System.out.println("               ________           ");
-            System.out.println("              /        \\          ");
-            System.out.println("             /          \\         ");
-            System.out.println("           ___           \\        ");
-            System.out.println("          /   \\           \\       ");
-            System.out.println("          \\___/           |       ");
-            System.out.println("            |             |       ");
-            System.out.println("           /|\\            |       ");
-            System.out.println("          / | \\           |       ");
-            System.out.println("         /  |  \\          |       ");
-            System.out.println("            |             |       ");
-            System.out.println("           /              |       ");
-            System.out.println("          /               |       ");
-            System.out.println("         /                |       ");
-            System.out.println("                          |       ");
-            System.out.println("                     _____|_____  ");
+            for(int index = 0; index < 18; index++)
+            {
+                String line = image6[index];
+                System.out.println(line);
+            }
         }
-        if(attempts == 0)
+        else
         {
-            System.out.println("                                  ");
-            System.out.println("                                  ");
-            System.out.println("               ________           ");
-            System.out.println("              /        \\          ");
-            System.out.println("             /          \\         ");
-            System.out.println("           ___           \\        ");
-            System.out.println("          /   \\           \\       ");
-            System.out.println("          \\___/           |       ");
-            System.out.println("            |             |       ");
-            System.out.println("           /|\\            |       ");
-            System.out.println("          / | \\           |       ");
-            System.out.println("         /  |  \\          |       ");
-            System.out.println("            |             |       ");
-            System.out.println("           / \\            |       ");
-            System.out.println("          /   \\           |       ");
-            System.out.println("         /     \\          |       ");
-            System.out.println("                          |       ");
-            System.out.println("                     _____|_____  ");
+            for(int index = 0; index < 18; index++)
+            {
+                String line = image7[index];
+                System.out.println(line);
+            }
         }
     }
     
@@ -256,7 +229,17 @@ public class HangmanGame
                 remaining++;
             }
         }
-        System.out.println("There are " + remaining + " letters left to go");
+        if(remaining == 0)
+        {
+            System.out.println("Congratulations!");
+            System.out.println("You solved the word with " + attempts + " guesses left");
+        }
+        if(attempts == 0)
+        {
+            System.out.println("Better luck next time!");
+            System.out.println("You only needed " + remaining + " more letters");
+            System.out.println("The word was " + chosenWord);
+        }
         return(remaining == 0 || attempts == 0);
     }
 
@@ -266,20 +249,20 @@ public class HangmanGame
         HangmanGame game = new HangmanGame();
         game.loadDictionary();
         game.loadGameData();
+        game.loadImages();
         System.out.println("The word is " + game.chosenWord);
         game.printWord();
         while(!game.finished())
         {
+            game.drawPicture();
             System.out.println("Please enter your guess");
             char letter = game.takeInput();
-            System.out.println("You typed: " + letter);
             if(!game.processInput(letter))
             {
                 System.out.println("Sorry!");
                 game.attempts--;
             }
             game.drawPicture();
-            System.out.println("You have " + game.attempts + " guesses left");
             game.printWord();
         }
     }

@@ -264,7 +264,7 @@ public class HangmanGame
     {
         for(int index = 0; index < guessedLetters.length(); index++)
         {
-            if(letter == guessedLetters.charAt(index))
+            if(letter == guessedLetters.charAt(index) || letter - 32 == guessedLetters.charAt(index))
             {
                 return true;
             }
@@ -288,8 +288,8 @@ public class HangmanGame
                 {
                     if(wordInProgress[jndex] != '_' &&
                        wordInProgress[jndex] != current.charAt(jndex) &&
-                       wordInProgress[jndex] + 32 != current.charAt(jndex) ||
-                       hasBeenGuessed(current.charAt(jndex)))
+                       wordInProgress[jndex] + 32 != current.charAt(jndex))
+//                       hasBeenGuessed(current.charAt(jndex)))
                     {
                         possible = false;
                     }

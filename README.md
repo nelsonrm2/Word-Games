@@ -12,6 +12,6 @@ Type ? to display a list of likely words based on available letters
 
 ## Caesar
 
-An encoder/decoder pair of a Caesar cipher\
+An encoder/decoder pair that implements a Caesar cipher\
 Reads from a plaintext file and shifts the letters to scramble the message\
 The distance that the letters are shifted is randomly generated

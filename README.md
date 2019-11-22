@@ -15,3 +15,8 @@ Type ? to display a list of likely words based on available letters
 An encoder/decoder pair that implements a Caesar cipher\
 Reads from a plaintext file and shifts the letters to scramble the message\
 The distance that the letters are shifted is randomly generated
+
+## WordSearch
+
+A faster way to search for a given word in the dictionary\
+Skips through the dictionary to search for individual letters

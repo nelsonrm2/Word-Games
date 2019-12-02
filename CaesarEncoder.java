@@ -14,12 +14,12 @@ public class CaesarEncoder
 
     public void readFile()
     {
-        String currentLine = "";
         int cursor = 0;
         try
         {
             BufferedReader reader = new BufferedReader(new FileReader("plaintext.txt"));
-            while((currentLine = reader.readLine()) != null)
+            for(String currentLine = reader.readLine(); currentLine != null; currentLine = reader.readLine())
+//            while((currentLine = reader.readLine()) != null)
             {
                 plaintext[cursor] = currentLine;
                 cursor++;

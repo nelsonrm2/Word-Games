@@ -69,13 +69,9 @@ public class CaesarDecoder
 
         for(int shift = 0; shift < 26; shift++)
         {
-            System.out.println("Shift by " + shift);
             String decodeFirst = shiftWord(firstWord, shift);
-            System.out.print("\t1: " + decodeFirst);
             String decodeSecond = shiftWord(secondWord, shift);
-            System.out.print("\t2: " + decodeSecond);
             String decodeThird = shiftWord(thirdWord, shift);
-            System.out.println("\t3: " + decodeThird);
             if(validWord(decodeFirst) &&
                validWord(decodeSecond) &&
                validWord(decodeThird))
